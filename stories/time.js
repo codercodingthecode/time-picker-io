@@ -22,6 +22,7 @@ const TimePicker = styled(RawTimePicker)`
   background-color: ${({ color, bg }) => mix(0.92, bg, color)};
   border-radius: 4px;
   width: 300px;
+  height: 50px;
 
   .rc-time-picker-input {
     padding: 8px;
@@ -107,6 +108,9 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   padding-top: 10vh;
+  background-color: deeppink;
+  width: 100vw;
+  height: 100vh;
   /* System font stack */
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
@@ -117,14 +121,17 @@ storiesOf('Timepicker', module).add('First', () => (
   <Wrapper>
 
   <TimePicker
-  bg="#483C90"
-  color="#fff"
+    bg="#483C90"
+    color="#fff"
+    name='start_time'
     minuteStep={15}
     showSecond={false}
+    placeholder={"Start Time"}
     // show AM/PM
     use12Hours={true}
     // component manages state
     defaultValue={DateTime.local()}
+    // value={(val) => console.log('val ----> ', val) || ''}
     style={{
       width: 400,
       height: 50,
