@@ -1,10 +1,11 @@
 /* eslint jsx-a11y/no-autofocus: 0 */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import moment from 'moment'
+// import moment from 'moment'
 import styled from 'styled-components'
 import classNames from 'classnames'
 import Panel from './Panel'
+import {DateTime} from 'luxon'
 
 function noop() {}
 
@@ -68,7 +69,7 @@ export default class Picker extends Component {
     className: '',
     popupClassName: '',
     id: '',
-    defaultOpenValue: moment(),
+    defaultOpenValue: DateTime.local(),
     allowEmpty: true,
     showHour: true,
     showMinute: true,
@@ -291,13 +292,13 @@ export default class Picker extends Component {
             disabled={disabled}
             ref={this.saveInputRef}
             role="button"
-            aria-label={ariaLabelFunc(value.format(this.getFormat()))}
+            aria-label={value && ariaLabelFunc(value.toFormat(this.getFormat()))}
           >
             <TimeText className={`${prefixCls}-input-time`}>
-              {value ? value.format(this.getFormat(false)) : ''}
+              {value ? value.toFormat(this.getFormat(false)) : ''}
             </TimeText>
             <AMPMText className={`${prefixCls}-input-ampm`}>
-              &nbsp;{value ? value.format('a') : ''}
+              &nbsp;{value ? value.toFormat('a') : ''}
             </AMPMText>
           </TimeDisplay>
         )}

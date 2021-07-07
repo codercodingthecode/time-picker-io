@@ -55,42 +55,43 @@ class Combobox extends Component {
       onChange,
       defaultOpenValue,
       use12Hours,
-      value: propValue,
       isAM,
       onAmPmChange
     } = this.props
-    const value = (propValue || defaultOpenValue).clone()
+    const value = (this.props.value || defaultOpenValue);
+    let { hour, minute, second } = value;
 
     if (type === 'hour') {
       if (use12Hours) {
         if (isAM) {
-          value.hour(+itemValue % 12)
+          hour = +itemValue % 12
         } else {
-          value.hour((+itemValue % 12) + 12)
+          hour = (+itemValue % 12) + 12
         }
       } else {
-        value.hour(+itemValue)
+        hour = +itemValue
       }
     } else if (type === 'minute') {
-      value.minute(+itemValue)
+      minute = +itemValue
     } else if (type === 'ampm') {
       const ampm = itemValue.toUpperCase()
       if (use12Hours) {
-        if (ampm === 'PM' && value.hour() < 12) {
-          value.hour((value.hour() % 12) + 12)
+        if (ampm === 'PM' && hour < 12) {
+          hour = (hour % 12) + 12
         }
 
         if (ampm === 'AM') {
-          if (value.hour() >= 12) {
-            value.hour(value.hour() - 12)
+          if (hour >= 12) {
+            hour = hour - 12
           }
         }
       }
       onAmPmChange(ampm)
     } else {
-      value.second(+itemValue)
+      second = +itemValue
     }
-    onChange(value)
+    const newValue = value.set({ hour, minute, second });
+    onChange(newValue);
   }
 
   getHourSelect(hour) {
@@ -144,7 +145,7 @@ class Combobox extends Component {
       return null
     }
     const value = propValue || defaultOpenValue
-    const disabledOptions = disabledMinutes(value.hour())
+    const disabledOptions = disabledMinutes(value.hour)
 
     return (
       <Select
@@ -175,7 +176,7 @@ class Combobox extends Component {
       return null
     }
     const value = propValue || defaultOpenValue
-    const disabledOptions = disabledSeconds(value.hour(), value.minute())
+    const disabledOptions = disabledSeconds(value.hour, value.minute)
 
     return (
       <Select
@@ -269,10 +270,10 @@ class Combobox extends Component {
     const value = propValue || defaultOpenValue
     return (
       <Columns className={`${prefixCls}-combobox`}>
-        {this.getHourSelect(value.hour())}
-        {this.getMinuteSelect(value.minute())}
-        {this.getSecondSelect(value.second())}
-        {this.getAMPMSelect(value.hour())}
+        {this.getHourSelect(value.hour)}
+        {this.getMinuteSelect(value.minute)}
+        {this.getSecondSelect(value.second)}
+        {this.getAMPMSelect(value.hour)}
       </Columns>
     )
   }

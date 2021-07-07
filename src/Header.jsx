@@ -30,7 +30,7 @@ class Header extends Component {
     super(props)
     const { value, format } = props
     this.state = {
-      str: (value && value.format(format)) || '',
+      str: (value && value.toFormat(format)) || '',
       invalid: false
     }
   }
@@ -38,7 +38,7 @@ class Header extends Component {
   componentWillReceiveProps(nextProps) {
     const { value, format } = nextProps
     this.setState({
-      str: (value && value.format(format)) || '',
+      str: (value && value.toFormat(format)) || '',
       invalid: false
     })
   }
@@ -61,7 +61,7 @@ class Header extends Component {
 
     if (str) {
       const { value: originalValue } = this.props
-      const value = this.getProtoValue().clone()
+      const value = this.getProtoValue()
       const parsed = moment(str, format, true)
       if (!parsed.isValid()) {
         this.setState({
@@ -76,9 +76,9 @@ class Header extends Component {
 
       // if time value not allowed, response warning.
       if (
-        hourOptions.indexOf(value.hour()) < 0 ||
-        minuteOptions.indexOf(value.minute()) < 0 ||
-        secondOptions.indexOf(value.second()) < 0
+        hourOptions.indexOf(value.hour) < 0 ||
+        minuteOptions.indexOf(value.minute) < 0 ||
+        secondOptions.indexOf(value.second) < 0
       ) {
         this.setState({
           invalid: true
@@ -88,18 +88,18 @@ class Header extends Component {
 
       // if time value is disabled, response warning.
       const disabledHourOptions = disabledHours()
-      const disabledMinuteOptions = disabledMinutes(value.hour())
+      const disabledMinuteOptions = disabledMinutes(value.hour)
       const disabledSecondOptions = disabledSeconds(
-        value.hour(),
-        value.minute()
+        value.hour,
+        value.minute
       )
       if (
         (disabledHourOptions &&
-          disabledHourOptions.indexOf(value.hour()) >= 0) ||
+          disabledHourOptions.indexOf(value.hour) >= 0) ||
         (disabledMinuteOptions &&
-          disabledMinuteOptions.indexOf(value.minute()) >= 0) ||
+          disabledMinuteOptions.indexOf(value.minute) >= 0) ||
         (disabledSecondOptions &&
-          disabledSecondOptions.indexOf(value.second()) >= 0)
+          disabledSecondOptions.indexOf(value.second) >= 0)
       ) {
         this.setState({
           invalid: true
@@ -109,15 +109,15 @@ class Header extends Component {
 
       if (originalValue) {
         if (
-          originalValue.hour() !== value.hour() ||
-          originalValue.minute() !== value.minute() ||
-          originalValue.second() !== value.second()
+          originalValue.hour !== value.hour ||
+          originalValue.minute !== value.minute ||
+          originalValue.second !== value.second
         ) {
           // keep other fields for rc-calendar
-          const changedValue = originalValue.clone()
-          changedValue.hour(value.hour())
-          changedValue.minute(value.minute())
-          changedValue.second(value.second())
+          const changedValue = originalValue
+          changedValue.hour = value.hour
+          changedValue.minute = value.minute
+          changedValue.second = value.second
           onChange(changedValue)
         }
       } else if (originalValue !== value) {
