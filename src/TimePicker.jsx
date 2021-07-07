@@ -287,11 +287,19 @@ export default class Picker extends Component {
           <TimeDisplay
             tabIndex={0}
             className={`${prefixCls}-input`}
-            onClick={() => this.setOpen(true)}
+            onClick={() => {
+              if (onFocus) {
+                onFocus()
+              }
+              this.setOpen(true)
+            }}
             onKeyDown={e => {
               if (e.keyCode === 13 || e.keyCode === 32) {
                 // enter or space
                 this.setOpen(true)
+                if (onFocus) {
+                  onFocus()
+                }
                 e.preventDefault()
                 e.stopPropagation()
               }
