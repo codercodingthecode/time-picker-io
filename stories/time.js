@@ -131,7 +131,6 @@ storiesOf('Timepicker', module).add('First', () => (
     use12Hours={true}
     // component manages state
     defaultValue={DateTime.local()}
-    // value={(val) => console.log('val ----> ', val) || ''}
     style={{
       width: 400,
       height: 50,

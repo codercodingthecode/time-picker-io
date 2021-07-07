@@ -45,5 +45,6 @@
     "raf": "^3.4.1",
     "storybook": "^1.0.0",
     "styled-components": "^5.3.0"
-  }
+  },
+    "types": "index.d.ts"
 }

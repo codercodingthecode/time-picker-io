@@ -1,7 +1,6 @@
 /* eslint jsx-a11y/no-autofocus: 0 */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-// import moment from 'moment'
 import styled from 'styled-components'
 import classNames from 'classnames'
 import Panel from './Panel'
@@ -70,7 +69,6 @@ export default class Picker extends Component {
     popupClassName: '',
     id: '',
     defaultOpenValue: DateTime.local(),
-    // placeholder: this.props.placeholder,
     allowEmpty: true,
     showHour: true,
     showMinute: true,
@@ -276,7 +274,6 @@ export default class Picker extends Component {
       autoFocus,
       inputIcon
     } = this.props
-    console.log('Place Holder ----->> ', placeholder, name)
     const { open, value } = this.state
     return (
       <div className={`${prefixCls}-wrapper ${className}`}>
@@ -316,38 +313,7 @@ export default class Picker extends Component {
             <AMPMText className={`${prefixCls}-input-ampm`}>
               &nbsp;{value ? value.toFormat('a') : ''}
             </AMPMText>
-
-            {/* <input
-            tabIndex={0}
-            className={`${prefixCls}-input`}
-            onClick={() => this.setOpen(true)}
-            onKeyDown={e => {
-              if (e.keyCode === 13 || e.keyCode === 32) {
-                // enter or space
-                this.setOpen(true)
-                e.preventDefault()
-                e.stopPropagation()
-              }
-            }}
-            aria-label={value && ariaLabelFunc(value.toFormat(this.getFormat()))}
-            ref={this.saveInputRef}
-            type="text"
-            placeholder={placeholder}
-            name={name}
-            onKeyDown={this.onKeyDown}
-            disabled={disabled}
-            value={value && value.toFormat(this.getFormat()) || ''}
-            autoComplete={autoComplete}
-            onFocus={onFocus}
-            onBlur={onBlur}
-            autoFocus={autoFocus}
-            onChange={noop}
-            readOnly={!!inputReadOnly}
-            id={id}
-          /> */}
-          {inputIcon || <span className={`${prefixCls}-icon`}/>}
-
-
+            {inputIcon || <span className={`${prefixCls}-icon`}/>}
           </TimeDisplay>
           </span>
         )}
