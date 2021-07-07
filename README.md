@@ -2,13 +2,12 @@
 
 An accessible and customisable React TimePicker.
 
-This is an opinionated, simplified fork of [rc-time-picker](https://react-component.github.io/time-picker/) with the following changes:
+This is a simplified fork of [rc-time-picker](https://react-component.github.io/time-picker/) with the following changes:
 
 ### Styling
 
-- very minimal styling (see [codesandbox](https://codesandbox.io/s/styled-time-picker-13h6y) for example of how we're using it in our app)
-  - uses styled components instead of less
-  - uses flexbox for columns instead of floating & fixed widths
+- uses styled components instead of less
+- uses flexbox for columns instead of floating & fixed widths
 - the panel now expands inline instead of popping above the content
 - in collapsed state the element is now a div (instead of an input). AM/PM is separated so it can be styled independently:
 
@@ -30,24 +29,6 @@ This is an opinionated, simplified fork of [rc-time-picker](https://react-compon
   - `aria-checked` is used to indicate the currently selected element
 - screen-reader friendly `aria-label`s with no leading zeros (so screenreader says "one" instead of "zero one"), and labels on radio groups (e.g. "Select AM or PM").
 - `aria-invalid` is used to indicate incorrectly formatted time (when entering time manually)
-
-## Demo
-
-![Demo](./screenshots/demo.gif)
-
-https://codesandbox.io/s/styled-time-picker-13h6y
-
-## Install
-
-```bash
-npm install @bonobolabs/time-picker
-```
-
-or
-
-```bash
-yarn add @bonobolabs/time-picker
-```
 
 ## Usage
 
@@ -76,8 +57,6 @@ const App = () => (
 
 ReactDOM.render(<App />, container)
 ```
-
-See [TimePicker.jsx](./src/TimePicker.jsx) and [rc-time-picker docs](https://react-component.github.io/time-picker/#api) for options.
 
 ## License
 
