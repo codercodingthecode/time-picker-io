@@ -1,12 +1,11 @@
 {
-  "name": "@bonobolabs/time-picker",
-  "version": "0.0.7",
+  "name": "@joshin-code/time-picker",
+  "version": "0.0.8",
   "description": "Accessible and customisable React time picker",
-  "homepage": "http://github.com/Bonobolabs/time-picker",
-  "author": "alex@louden.com",
+  "homepage": "https://github.com/joshin-code/time-picker",
   "repository": {
     "type": "git",
-    "url": "git@github.com:/Bonobolabs/time-picker.git"
+    "url": "https://github.com/joshin-code/time-picker.git"
   },
   "license": "MIT",
   "main": "lib/index.js",
