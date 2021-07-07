@@ -1,6 +1,6 @@
 {
   "name": "@joshin-code/time-picker",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Accessible and customisable React time picker",
   "homepage": "https://github.com/joshin-code/time-picker",
   "repository": {
