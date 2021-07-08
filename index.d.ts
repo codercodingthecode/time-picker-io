@@ -1,4 +1,4 @@
-declare module '@joshin-code/time-picker' {
+declare module 'time-picker-io' {
   import React from 'react'
   import { DateTime } from 'luxon'
   const TimePicker: React.ComponentClass<Partial<TimePickerProps>>
