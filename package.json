@@ -1,11 +1,11 @@
 {
-  "name": "@joshin-code/time-picker",
-  "version": "0.0.13",
+  "name": "time-picker-io",
+  "version": "0.0.1",
   "description": "Accessible and customisable React time picker",
-  "homepage": "https://github.com/joshin-code/time-picker",
+  "homepage": "https://github.com/codercodingthecode/time-picker-io",
   "repository": {
     "type": "git",
-    "url": "https://github.com/joshin-code/time-picker.git"
+    "url": "https://github.com/codercodingthecode/time-picker-io"
   },
   "license": "MIT",
   "main": "lib/index.js",
